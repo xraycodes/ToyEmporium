@@ -1,63 +1,47 @@
 <script setup>
 import JSONfile from './assets/questions.json'
 
-import { reactive, ref } from 'vue'
-import QuestionTemplate from './assets/components/questionTemplate.vue'
+import {reactive, ref} from 'vue';
+import QuestionTemplate from './assets/components/questionTemplate.vue';
+import AddAndDeleteButtons from './assets/components/AddAndDeleteButtons.vue';
 
 const questionsInJSON = reactive(JSONfile)
 
-const editing = ref(false);
+// If set to True will allow questioned to be edited
+const editingAvailable = ref(false);
+
+// Total number of questions shown(Initial is 2 as per questions.json)  
+const questionsLength = ref(JSONfile.length)
+
+
+
 const editedQuestion = ref('');
 const editedAnswer = ref('');
 const editedQuestionIndex = ref(-1);
 
-
 const startEdit = (questionIndex, question, answer) => {
-  editing.value = true;
+  editingAvailable.value = true;
   editedQuestionIndex.value = questionIndex;
   editedQuestion.value = question;
   editedAnswer.value = answer;
 };
 
-
-
-
-const questionsLength = ref(JSONfile.length)
-const addTemplate = () => {
-  questionsLength.value++
-}
-const removeTemplate = () => {
-  questionsLength.value--
-}
-
-
-// const paragraph = ref([])
-// const addParagraph = () =>{
-//   paragraph.value.push(paragraph.value.length+1)
-// }
-
-// const removeParagraph = () => {
-//   paragraph.value.pop()
-// }
-
-const flag = true
-const template = QuestionTemplate
 </script>
-
 
 <template>
   <h1>Quiz</h1>
-  <div v-if="flag" v-for="question in questionsInJSON">
-    <p> {{ question.statement }}</p>
-    <div v-for="(answer, key) in question.answers">
-      <label :for="key">{{ key }} {{ answer }}</label>
-      <input type="radio" :id="key" :name="'question-' + question.question">
-    </div>
-  </div>
+  <!-- Outputs the static questions in questions.json-->
+  <div v-for="question in questionsInJSON">
+      <p> {{ question.statement }}</p>
+      <div v-for="(answer, key) in question.answers">
+        <input type="radio"
+                :id ="key"
+                :name="'question-' + question.question">
+        <label :for="key"> {{ answer }}</label>
+      </div>
+   </div>
 
-  <br>
-
-  <div v-if="editing">
+   <div v-if="editingAvailable">
     <h2>Edit Question</h2>
     <form @submit.prevent="saveEdit">
       <div>
@@ -71,27 +55,21 @@ const template = QuestionTemplate
       <button type="submit">Save</button>
     </form>
   </div>
+  
+<!-- Outputs # of question template component based on length of questionsLength -->
+<QuestionTemplate v-for="i in (questionsLength - 2)"/>
 
 
-  <!-- <QuestionTemplate v-for="i in questionsLength"/> -->
+<!-- Add or delete buttons to add or subtract total questions -->
+<AddAndDeleteButtons @removeTemplate="questionsLength--" @addTemplate="questionsLength++"/>
 
 
-
-  <div>
-    <button @click="addTemplate">Click to add template</button>
-    <button @click="removeTemplate">Click to remove template</button>
-    <h1>{{ questionsLength }}</h1>
-  </div>
-
-  <!-- <div>
-    <button @click="">Click to edit</button>
-   </div> -->
-
-  <button @click="startEdit(1, 'hi', 'bcd')">
+   <button @click="startEdit(1, 'hi', 'bcd')">
     Click to edit
   </button>
 </template>
 
 
 
-<style scoped></style>
+<style scoped>
+</style>
