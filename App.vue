@@ -2,7 +2,7 @@
 import JSONfile from './assets/questions.json'
 
 import {reactive, ref} from 'vue'
-import QuestionTemplate from './components/questionTemplate.vue'
+import QuestionTemplate from './src/assets/components/questionTemplate.vue'
 
 const questionsInJSON = reactive(JSONfile)
 
