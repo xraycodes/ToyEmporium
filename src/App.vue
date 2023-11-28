@@ -1,9 +1,10 @@
 <script setup>
 import JSONfile from './assets/questions.json'
 
-import {reactive, ref} from 'vue';
+import {reactive, ref, watch} from 'vue';
 import QuestionTemplate from './assets/components/questionTemplate.vue';
 import AddAndDeleteButtons from './assets/components/AddAndDeleteButtons.vue';
+import EditButton from ;
 
 const questionsInJSON = reactive(JSONfile)
 
@@ -12,8 +13,6 @@ const editingAvailable = ref(false);
 
 // Total number of questions shown(Initial is 2 as per questions.json)  
 const questionsLength = ref(JSONfile.length)
-
-
 
 const editedQuestion = ref('');
 const editedAnswer = ref('');
@@ -55,21 +54,16 @@ const startEdit = (questionIndex, question, answer) => {
       <button type="submit">Save</button>
     </form>
   </div>
-  
-<!-- Outputs # of question template component based on length of questionsLength -->
-<QuestionTemplate v-for="i in (questionsLength - 2)"/>
 
+<div v-for="question in (questionsLength - JSONfile.length)">
+  <QuestionTemplate/>
+</div>
 
 <!-- Add or delete buttons to add or subtract total questions -->
-<AddAndDeleteButtons @removeTemplate="questionsLength--" @addTemplate="questionsLength++"/>
-
-
-   <button @click="startEdit(1, 'hi', 'bcd')">
-    Click to edit
-  </button>
+<AddAndDeleteButtons :questionsLength="questionsLength" @removeTemplate="questionsLength--" @addTemplate="questionsLength++"/>
+<EditButton :questionsLength="questionsLength"/>
 </template>
-
-
 
 <style scoped>
 </style>
+

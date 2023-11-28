@@ -1,10 +1,13 @@
 <script setup>
+import {ref} from 'vue';
+
+const props = defineProps(['questionsLength'])
+const questionNumber = ref(props.questionsLength)
 
 </script>
 
 <template>
-
-    <p>Insert question</p>
+    <p>Insert question {{ questionNumber }}</p>
     <div>
         <label for="a">Insert A</label>
         <input id="a" type="radio" name="question">
