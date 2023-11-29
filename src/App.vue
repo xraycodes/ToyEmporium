@@ -1,11 +1,13 @@
 <script setup>
-import JSONfile from './assets/questions.json'
+import JSONfile from './assets/components/questions.json'
 
 import { reactive, ref } from 'vue';
 import QuestionTemplate from './assets/components/QuestionTemplate.vue';
 import AddAndDeleteButtons from './assets/components/AddAndDeleteButtons.vue';
+import EditButton from './assets/components/EditButton.vue';
 import Header from './assets/components/layout/Header.vue';
 import Footer from './assets/components/layout/Footer.vue';
+
 
 const questionsInJSON = reactive(JSONfile)
 
@@ -15,7 +17,13 @@ const editingAvailable = ref(false);
 // Total number of questions shown(Initial is 2 as per questions.json)  
 const questionsLength = ref(JSONfile.length)
 
-
+// const questionsInfoObj = reactive({})
+const finalizeChanges = (question,statement,answers,value) =>{
+    questionsInJSON [question] = question 
+    questionsInJSON [statement] = statement
+    questionsInJSON [answers] = answers
+    questionsInJSON [value] = value
+  }
 
 const editedQuestion = ref('');
 const editedAnswer = ref('');
