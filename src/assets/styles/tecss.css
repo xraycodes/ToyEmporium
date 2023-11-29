@@ -1,0 +1,256 @@
+body,
+h1,
+h2,
+p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+
+}
+
+header {
+    background-color: #09715c;
+    color: #fff;
+    padding: 60px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+main {
+    padding: 20px;
+}
+
+.logo img {
+    float: left;
+    font-size: 1.5em;
+    width: 250px;
+    height: auto;
+    margin-top: -30px;
+    margin-right: 20px;
+}
+
+.header-nav {
+    float: right;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+}
+
+.overlay a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 1.5em;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+    color: #f1f1f1;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    main {
+        padding: 20px;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: disc
+}
+
+ul ul {
+    list-style: circle
+}
+
+ul ul ul {
+    list-style: square
+}
+
+ul ul ul ul {
+    list-style: decimal-leading-zero
+}
+
+.nav li {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 0.25rem;
+    padding-top: 0.25rem
+}
+
+.inline-list li {
+    display: inline-block;
+}
+
+.theme-icon--instagram::before {
+    content: "\28";
+}
+
+footer {
+    background-color: #09715c;
+    color: #fff;
+    padding: 25px 0;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+}
+
+.site-footer__navigation a,
+.site-footer__social a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.site-footer__navigation {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    padding-bottom: 2.125rem;
+    padding-top: 1.25rem;
+    text-transform: uppercase;
+}
+
+.site-footer__navigation li:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.site-footer__social {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.site-footer__social li:not(:last-child) {
+    margin-right: 2.875rem;
+}
+
+.site-footer__navigation a:hover,
+.site-footer__navigation a:focus,
+.site-footer__social a:hover,
+.site-footer__social a:focus {
+    color: #11D796
+}
+
+.site-footer__border {
+    background: transparent url("../images/site-footer__bg.jpg") repeat-x top left;
+    color: #FFF;
+    flex-basis: 100%;
+    height: 1rem;
+}
+
+.site-footer__lower {
+    background: #E1E6E9;
+    color: #393E3D;
+    font-size: 0.875rem;
+    line-height: 1;
+    padding-bottom: 1.75rem;
+    padding-top: 1.25rem;
+}
+
+@media only screen and (min-width: 48em) {
+    .site-footer__newsletter {
+        padding-bottom: 2rem;
+        padding-top: 4rem
+    }
+}
+
+.site-footer__disclaimer {
+    margin-bottom: 1.625rem;
+}
+
+.site-footer__navigation {
+    padding-bottom: 0;
+    padding-top: 2rem
+}
+
+.site-footer__navigation li {
+    display: inline-block
+}
+
+.site-footer__navigation li:not(:last-child) {
+    margin-right: 2.813rem
+}
+
+.site-footer__lower {
+    padding-bottom: 2.375rem;
+    padding-top: 2.375rem;
+    position: relative
+}
+
+.site-footer__navigation-links {
+    text-align: center;
+}
+
+.inline-list {
+    list-style-type: none;
+}
+
+@media only screen and (min-width: 75em) {
+    .site-footer__navigation {
+        padding-bottom: 2.125rem
+    }
+
+    .site-footer__navigation li:not(:last-child) {
+        margin-bottom: 0;
+        margin-right: 5.5rem
+    }
+}
