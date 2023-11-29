@@ -4,7 +4,7 @@ import {ref, reactive} from 'vue';
 const props = defineProps(['questionsLength'])
 const emit = defineEmits(['finalizeChanges'])
 
-
+const editOn = ref(false)
 const question = ref('') 
 const statement = ref('') 
 const answers = ref('') 
@@ -15,14 +15,13 @@ const value = ref('')
 // const editedQuestionIndex = ref(-1);
 
 // const startEdit = (questionIndex, question, answer) => {
-//   editingAvailable.value = true;
 //   editedQuestionIndex.value = questionIndex;
 //   editedQuestion.value = question;
 //   editedAnswer.value = answer;
 // };
 
 // //function 
-// <button @click="startEdit(1, 'hi', 'bcd')">
+// <button @click="startEdit(1, 'hi', 'bcd')">r
 //     Click to edit
 //   </button>
 
@@ -30,11 +29,11 @@ const value = ref('')
 
 <template>
     <div>
-        <button>Click To Edit The Questions</button>
+        <button @click="editOn = !editOn">Click To Edit The Questions</button>
     </div>
     <br>
 
-    <div>
+    <div v-if="editOn">
         <label for="questionNumber">Question: </label>
         <input type="text" id="questionNumber" v-model="question"><br>
 
@@ -46,7 +45,8 @@ const value = ref('')
 
         <label for="Value">Value: </label>
         <input type="text" id="Value" v-model="value"><br>
-    </div>
+        <br>
 
-    <button @click="$emit(finalizeChanges(question,statement,answers,value))">Click to finalize changes</button>
+        <button @click="$emit(finalizeChanges(question,statement,answers,value))">Click to finalize changes</button>
+    </div>
 </template>

@@ -23,8 +23,7 @@ computed(()=> {
 </script>
 
 <template>
-    <h1>{{ questionsInJSON }}</h1>
-    <p>Insert question {{ questionNumber }}</p>
+    <p>{{ questionNumber }}. Insert question </p>
     <div>
         <input id="a" type="radio" name="question" v-model="question">
         <label for="a">Insert A</label>
@@ -41,7 +40,7 @@ computed(()=> {
         <input id="d" type="radio" name="question" v-model="value">
         <label for="d">Insert D</label>
     </div>
-
+    <br>
 
 </template>
 

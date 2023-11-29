@@ -47,41 +47,27 @@ const startEdit = (questionIndex, question, answer) => {
       <!-- Quiz questions and blanks go here -->
 
       <h1>Quiz</h1>
+      <br>
       <!-- Outputs the static questions in questions.json-->
       <div v-for="question in questionsInJSON">
-        <p> {{ question.statement }}</p>
+        <p>{{question.question}}. {{ question.statement }}</p>
         <div v-for="(answer, key) in question.answers">
           <input type="radio" :id="key" :name="'question-' + question.question">
           <label :for="key"> {{ answer }}</label>
         </div>
-      </div>
-
-      <div v-if="editingAvailable">
-        <h2>Edit Question</h2>
-        <form @submit.prevent="saveEdit">
-          <div>
-            <label for="editedQuestion">Question:</label>
-            <input v-model="editedQuestion" id="editedQuestion" type="text" />
-          </div>
-          <div>
-            <label for="editedAnswer">Answer:</label>
-            <input v-model="editedAnswer" id="editedAnswer" type="text" />
-          </div>
-          <button type="submit">Save</button>
-        </form>
+        <br>
       </div>
 
       <!-- Outputs # of question template component based on length of questionsLength -->
-      <QuestionTemplate v-for="i in (questionsLength - 2)" />
+      <QuestionTemplate :questionsLength="questionsLength" v-for="i in (questionsLength - 2)" />
 
 
       <!-- Add or delete buttons to add or subtract total questions -->
       <AddAndDeleteButtons @removeTemplate="questionsLength--" @addTemplate="questionsLength++" />
+      
+      <br>
+      <EditButton :questionsLength="questionsLength"/>
 
-
-      <button @click="startEdit(1, 'hi', 'bcd')">
-        Click to edit
-      </button>
     </section>
   </main>
 
