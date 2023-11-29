@@ -1,10 +1,10 @@
 <script setup>
-import JSONfile from './assets/questions.json'
+import JSONfile from './assets/components/questions.json'
 
 import {reactive, ref, watch} from 'vue';
 import QuestionTemplate from './assets/components/questionTemplate.vue';
 import AddAndDeleteButtons from './assets/components/AddAndDeleteButtons.vue';
-import EditButton from ;
+import EditButton from './assets/components/EditButton.vue';
 
 const questionsInJSON = reactive(JSONfile)
 
@@ -13,6 +13,14 @@ const editingAvailable = ref(false);
 
 // Total number of questions shown(Initial is 2 as per questions.json)  
 const questionsLength = ref(JSONfile.length)
+
+// const questionsInfoObj = reactive({})
+const finalizeChanges = (question,statement,answers,value) =>{
+    questionsInJSON [question] = question 
+    questionsInJSON [statement] = statement
+    questionsInJSON [answers] = answers
+    questionsInJSON [value] = value
+  }
 
 const editedQuestion = ref('');
 const editedAnswer = ref('');
@@ -28,6 +36,7 @@ const startEdit = (questionIndex, question, answer) => {
 </script>
 
 <template>
+  <h1>{{ questionsInJSON }}</h1>
   <h1>Quiz</h1>
   <!-- Outputs the static questions in questions.json-->
   <div v-for="question in questionsInJSON">
@@ -55,13 +64,15 @@ const startEdit = (questionIndex, question, answer) => {
     </form>
   </div>
 
+<br>
 <div v-for="question in (questionsLength - JSONfile.length)">
-  <QuestionTemplate/>
+    <QuestionTemplate :questionsLength="questionsLength"/>
 </div>
 
 <!-- Add or delete buttons to add or subtract total questions -->
 <AddAndDeleteButtons :questionsLength="questionsLength" @removeTemplate="questionsLength--" @addTemplate="questionsLength++"/>
-<EditButton :questionsLength="questionsLength"/>
+<br>
+<EditButton @finalizeChanges="finalizeChanges" :questionsLength="questionsLength"/>
 </template>
 
 <style scoped>
