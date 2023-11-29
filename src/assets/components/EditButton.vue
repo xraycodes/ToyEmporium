@@ -5,6 +5,7 @@ const props = defineProps(['questionsLength'])
 const emit = defineEmits(['finalizeChanges'])
 
 const editOn = ref(false)
+// The keys in all of questions
 const question = ref('') 
 const statement = ref('') 
 const answers = ref('') 

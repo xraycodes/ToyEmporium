@@ -1,20 +1,13 @@
 <script setup>
-import {ref, watch, onMounted} from 'vue'
+import {ref, watch, } from 'vue'
+
+
 const emit = defineEmits(['addTemplate', 'removeTemplate'])
 const props = defineProps(['questionsLength'])
 
-const questionNumber = ref(props.questionsLength)
 
 const MAXQUESTIONLENGTH = 10
 const MaxQuestions = ref(true)
-
-// onMounted(() => {
-//   watch(()=>questionNumber,(newValue) => {
-//     if (newValue >= MAXQUESTIONLENGTH) {
-//       MaxQuestions.value = false
-//     }
-//   })
-// })
 
 // NEEDS FIXING
 // onMounted(() => {
