@@ -2,7 +2,7 @@
 // Importing questions.json 
 import JSONfile from './assets/components/questions.json'
 
-import { reactive, ref } from 'vue';
+import { reactive, ref, watch } from 'vue';
 
 // Functionalites
 import QuestionTemplate from './assets/components/QuestionTemplate.vue';
@@ -16,19 +16,27 @@ import Footer from './assets/components/layout/Footer.vue';
 // JSONfile content is created into object
 const questionsInJSONAsObj = reactive(JSONfile)
 
+// Testing
+const questionsObj = reactive(questionsInJSONAsObj)
+
 // If set to True will allow questioned to be edited
 const editingAvailable = ref(false);
 
 // Total number of questions shown(Initial is 2 as per questions.json)  
 const questionsLength = ref(JSONfile.length)
 
-// const questionsInfoObj = reactive({})   // NEEDS FIXING
-// const finalizeChanges = (question,statement,answers,value) =>{
-//     questionsInJSONAsObj [question] = question 
-//     questionsInJSONAsObj [statement] = statement
-//     questionsInJSONAsObj [answers] = answers
-//     questionsInJSONAsObj [value] = value
-//   }
+watch(questionsLength, (newValue,oldValue) => {
+    const index = newValue - 1
+    if (!questionsInJSONAsObj[index]) {
+        questionsInJSONAsObj[index] = {};
+    }
+    questionsInJSONAsObj[index]['question'] = questionsLength.value
+    questionsInJSONAsObj[index]['statement'] = 'Insert question'
+    questionsInJSONAsObj[index]['answers'] = {"a":"Option A", "b":"Option B","c":"Option C","d":"Option D"}
+    questionsInJSONAsObj[index]['value'] = 1
+    console.log(questionsInJSONAsObj)
+  }
+)
 
   
 // const editedQuestion = ref('');
