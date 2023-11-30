@@ -151,8 +151,6 @@ footer {
     padding: 25px 0;
     width: 100%;
     box-sizing: border-box;
-    position: absolute;
-    bottom: 0;
 }
 
 .site-footer__navigation a,
@@ -243,6 +241,17 @@ footer {
 .inline-list {
     list-style-type: none;
 }
+
+.page-wrap {
+    min-height: 100%;
+
+}
+
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+
 
 @media only screen and (min-width: 75em) {
     .site-footer__navigation {

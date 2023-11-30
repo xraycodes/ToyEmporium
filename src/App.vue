@@ -19,16 +19,16 @@ const questionsInJSONAsObj = reactive(JSONfile)
 // Total number of questions shown(Initial is 2 as per questions.json)  
 const questionsLength = ref(JSONfile.length)
 
-watch(questionsLength, (newValue,oldValue) => {
-    const index = newValue - 1
-    if (!questionsInJSONAsObj[index]) {
-        questionsInJSONAsObj[index] = {};
-    }
-    questionsInJSONAsObj[index]['question'] = questionsLength.value
-    questionsInJSONAsObj[index]['statement'] = 'Insert question'
-    questionsInJSONAsObj[index]['answers'] = {"a":"Option A", "b":"Option B","c":"Option C","d":"Option D"}
-    questionsInJSONAsObj[index]['value'] = 1
+watch(questionsLength, (newValue, oldValue) => {
+  const index = newValue - 1
+  if (!questionsInJSONAsObj[index]) {
+    questionsInJSONAsObj[index] = {};
   }
+  questionsInJSONAsObj[index]['question'] = questionsLength.value
+  questionsInJSONAsObj[index]['statement'] = 'Insert question'
+  questionsInJSONAsObj[index]['answers'] = { "a": "Option A", "b": "Option B", "c": "Option C", "d": "Option D" }
+  questionsInJSONAsObj[index]['value'] = 1
+}
 )
 
 const finalizeChanges = (data) => {
@@ -38,7 +38,7 @@ const finalizeChanges = (data) => {
 }
 
 const removeTemplate = () => {
-  questionsInJSONAsObj.pop() 
+  questionsInJSONAsObj.pop()
 
 }
 </script>
@@ -48,7 +48,7 @@ const removeTemplate = () => {
   {{ questionsInJSONAsObj }}
   <Header></Header>
   <!-- Main Content Section -->
-  <main>
+  <main class="page-wrap">
     <!-- Your Quiz Content Goes Here -->
     <section class="quiz-section">
       <!-- Quiz questions and blanks go here -->
@@ -56,8 +56,8 @@ const removeTemplate = () => {
       <h1>Quiz</h1>
       <br>
       <!-- Outputs the static questions in questions.json-->
-      <div v-for="(question,index) in questionsInJSONAsObj">
-        <p>{{index + 1}}. {{ question.statement }}</p>
+      <div v-for="(question, index) in questionsInJSONAsObj">
+        <p>{{ index + 1 }}. {{ question.statement }}</p>
         <div v-for="(answer, key) in question.answers">
           <input type="radio" :id="key" :name="'question-' + (index + 1)">
           <label :for="key"> {{ answer }}</label>
@@ -72,15 +72,15 @@ const removeTemplate = () => {
       <!-- Add or delete buttons to add or subtract total questions -->
       <!-- Recieves removeTemplate and addTemplate from component -->
       <AddAndDeleteButtons @removeTemplate="removeTemplate" @addTemplate="questionsLength++" />
-      
+
       <br>
       <!-- Edit button to modify question and its answers -->
-      <EditButton :questionsLength="questionsLength" @finalizeChanges="finalizeChanges"/>
+      <EditButton :questionsLength="questionsLength" @finalizeChanges="finalizeChanges" />
 
     </section>
   </main>
 
-  <!-- <Footer></Footer> -->
+  <Footer></Footer>
   <!-- Hamburger Menu Overlay -->
   <div class="overlay">
     <div class="overlay-content">
