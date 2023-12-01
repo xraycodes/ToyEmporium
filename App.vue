@@ -187,8 +187,10 @@ function checkDuplicates(index)
       <!-- Edit button to modify question and its answers -->
       <EditButton :questionsLength="questionsLength" @finalizeChanges="finalizeChanges" />
 
-      <submitQuizButton :learnerType = 'yourType' :description = 'yourDescription'></submitQuizButton>
-
+      <!-- below, the submit button component and popUp, hidden by v-show until all questions are answered -->
+      <div v-show="allClicked">
+          <submitQuizButton :learnerType = 'yourType' :description = 'yourDescription'></submitQuizButton>
+      </div>
     </section>
   </main>
 
