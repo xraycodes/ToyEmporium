@@ -56,7 +56,7 @@ const sendChanges = () => {
     </div>
 </template>
 
-<style scoped>
+<style>
 #editButton,
 #finalizeButton {
   appearance: none;

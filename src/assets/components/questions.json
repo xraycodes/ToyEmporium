@@ -19,6 +19,99 @@
                 "d": "History"
             },
     "value": 1
+},
+{
+    "question": 3,
+    "statement": "Whats your childs favorite type of movie or book?",
+    "answers": {
+                "a":  "Animation",
+                 "b":   "Mystery", 
+                 "c":   "Adventure", 
+                 "d":    "Documentary"
+},
+    "value": 1
+},
+{
+    "question": 4,
+    "statement": "Which activity would your child enjoy most on a weekend?",
+    "answers": {
+             "a":  "Visiting a museum", 
+             "b": "Going to a workshop or class", 
+             "c":  "Exploring the woods", 
+             "d":  "Attending a music concert"
+},
+    "value": 1
+},
+{
+    "question": 5,
+    "statement": "Which of these game does your child enjoy the most?",
+    "answers": {
+        "a":  "Pictionary", 
+        "b": "Chess", 
+        "c":  "Animal Crossing", 
+        "d":"Trivia games"
+    },
+    "value": 1
+},
+{
+    "question": 6,
+    "statement": "Which of these gifts would your child appreciate the most?",
+    "answers": {
+        "a":  "A sketchbook", 
+        "b":  "A puzzle", 
+        "c":    "A plant or pet", 
+        "d":    "A diary"
+    },
+    "value": 1
+},
+{
+    "question": 7,
+    "statement": "how does your child react to new challenges?",
+    "answers": {
+        "a":   "embraces them creatively", 
+        "b":    "analyzes and plans", 
+        "c":    "learns about it", 
+        "d":    "Asks other for their opinions"
+    },
+    "value": 1
+},
+{
+    "question": 8,
+    "statement": "which of these clubs would your child most likely join at school?",
+    "answers": {
+        "a":   "arts and crafts club", 
+        "b":     "robotics club",
+        "c":    "nature and environment club", 
+        "d":    "drama and theatre club"
+    },
+    "value": 1
 }
+,
+{
+    "question": 9,
+    "statement": "If your child could travel back in time, where would they go?",
+    "answers": {
+        "a":   "To the age of the dinosaurs", 
+        "b":    "To ancient egypt to see the pyramids being built", 
+        "c":    "to a medievil castle", 
+        "d":    "to the first flight of the wright brothers"
+    },
+    "value": 1
+}
+,
+{
+    "question": 10,
+    "statement": "if your child could have any of these magical powers, which would they choose?",
+    "answers": {
+        "a":    "the skill to paint or draw anything perfectly", 
+        "b":    "the ability to create anything", 
+        "c":    "the power to communicate with animals", 
+        "d":    "the gift of understand any and all languages"
+    },
+    "value": 1
+}
+
+
 ]
+
 

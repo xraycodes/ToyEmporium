@@ -30,7 +30,7 @@
                         <li>
                             <a href="https://www.adventuretowntoys.com/news.html" target="_self"> PRESS</a>
                         </li>
-
+                        <!-- Add more footer links as needed -->
                     </ul>
                 </nav>
             </div>
@@ -46,7 +46,7 @@
                             <a class="theme-icon--instagram" href="https://www.instagram.com/adventuretowntoys/"
                                 target="_blank" rel="noreferrer" aria-label="View our Instagram Page">Instagram</a>
                         </li>
-
+                        <!-- Add more social media links as needed -->
                     </ul>
                 </nav>
                 <p>&copy; 2023 Adventuretown Toy Emporium. All Rights Reserved.</p>
