@@ -109,30 +109,42 @@ function tallyAnswers()
     }
   });
   console.log('congrats, you have ' + points.value);
-  if(points.value ===7)
+  if(points.value ===10)
   {
     console.log('you have a DESIGNERS eye!! very cool!');
     yourType.value = 'you have a DESIGNERS eye!! very cool!';
     yourDescription.value = 'Does your child love to color, draw, paint, shape, sticker, sew, decorate, build and design? Then this is the place for you!';
 
   }
-  if(points.value>7&&points.value<=14)
+  if(points.value>10&&points.value<=17)
   {
       console.log('you are quite the THINKER!! fantastic!');
       yourType.value = 'you are quite the THINKER!! fantastic!';
       yourDescription.value = 'Does your child love puzzles and games, as well as to flex their knowledge and solve conundrums? Then this is the place for you!';
   }
-  if(points.value > 14 && points.value <=21)
+  if(points.value > 17 && points.value <=28)
   {
     console.log('you would make a great SCIENTIST one day!! tubular!');
     yourType.value = 'you would make a great SCIENTIST one day!! tubular!'
     yourDescription.value = 'Is your child curious about dinosaurs, minerals, the human body, physics, chemistry, biology, forensics and nanotech? Then this is the place for you!';
   }
-  if(points.value > 21 && points.value<=28)
+  if(points.value > 28 && points.value <=35)
+  {
+    console.log('as a MAKER you create, build and explore! make dream come true!');
+    yourType.value = 'as a MAKER, you create, build and explore! make dream come true!'
+    yourDescription.value = 'Does your child love cars, to make robots, build, construct, engineer, tinker, code, and invent? Then this is the place for you.';
+  }
+  if(points.value > 35 && points.value<=39)
   {
     console.log('your varied interests would make for a fine DIRECTOR! awesome!');
     yourType.value = 'your varied interests would make for a fine DIRECTOR! awesome!'
     yourDescription.value = 'Does your child love to “Play House” or create worlds with dinosaurs, dolls, and other critters? Then this is the place for you.';
+  }
+  if(points.value ==40)
+  {
+    console.log('FLEDGINGS take flight with wide eyes and wonder!');
+    yourType.value = 'FLEDGINGS take flight with wide eyes and wonder!'
+    yourDescription.value = 'does your child look at the world and all its things with wonder and excitement? ready to reach out and try new things, go to new places, then this is the place for you!.';
   }
 }
 
@@ -189,7 +201,7 @@ function checkDuplicates(index)
 
       <!-- below, the submit button component and popUp, hidden by v-show until all questions are answered -->
       <div v-show="allClicked">
-          <submitQuizButton :learnerType = 'yourType' :description = 'yourDescription' class = 'subCom'></submitQuizButton>
+          <submitQuizButton :learnerType = 'yourType' :description = 'yourDescription'></submitQuizButton>
       </div>
     </section>
   </main>
@@ -241,7 +253,7 @@ p{
   }
 }
 p,h1,label{
-  font-size: clamp(1rem,2.2vw,1.8rem);
+  font-size: clamp(1rem,2vw,1.8rem);
   text-transform: capitalize;
 }
 
