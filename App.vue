@@ -8,7 +8,7 @@ import { reactive, ref, watch } from 'vue';
 import AddAndDeleteButtons from './assets/components/AddAndDeleteButtons.vue';
 import EditButton from './assets/components/EditButton.vue';
 import submitQuizButton from './assets/components/submitQuizButton.vue';
-import resultsPage from './assets/components/resultsPage.vue';
+// import resultsPage from './assets/components/resultsPage.vue';
 
 // Styling
 import Header from './assets/components/layout/Header.vue';
@@ -189,7 +189,7 @@ function checkDuplicates(index)
 
       <!-- below, the submit button component and popUp, hidden by v-show until all questions are answered -->
       <div v-show="allClicked">
-          <submitQuizButton :learnerType = 'yourType' :description = 'yourDescription'></submitQuizButton>
+          <submitQuizButton :learnerType = 'yourType' :description = 'yourDescription' class = 'subCom'></submitQuizButton>
       </div>
     </section>
   </main>
@@ -217,8 +217,32 @@ main{
 .answers{
  display: flex;
 width: fit-content;
-margin-left: 40vw;
+/* margin-left: 40vw; */
+/* flex-direction: row; */
+}
+.subCom{
+  width:100%;
+  margin: 0 auto;
+}
+input:hover{
+
+  transform:scale(1.2);
+  transition: 1s;
+
+}
+p{
+  margin-bottom: 10px;
 }
 
+@media  (min-width:450px) {
+  .answers{
+    margin-left: 35vw;
+    
+  }
+}
+p,h1,label{
+  font-size: clamp(1rem,2.2vw,1.8rem);
+  text-transform: capitalize;
+}
 
 </style>

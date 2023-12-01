@@ -4,16 +4,23 @@
     </div>
 
     <div v-show="show" class = 'popUp'>
+        <div class = 'popUpHead'>
      <h1 v v-show="show">Congratulations!</h1>
-     <p>You are a </p>
-     <p></p>
+     <p> {{learnerType}} </p>
+     <br>
+     <p>{{ description }}</p>
+        </div>
+        <div class = 'mid'></div>
+    <div class = 'popUpFoot'>
      <button @click="show = !show" class = 'subQuizButton' id = 'popUpCloseButton'>Close</button>
+    </div>
     </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 
+defineProps({learnerType:String,description:String});
 let show = ref(false);
    function popUp()
    {
@@ -25,19 +32,58 @@ let show = ref(false);
 </script>
 
 <style scoped>
+p{
+    text-transform: capitalize;
+    margin-top:10px;
+    color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+  font-size: clamp(1rem,2.3vw,2rem);
+}
 
+h1{
+    text-decoration: underline;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    
+  font-size: clamp(1rem,2.3vw,2rem);
+}
+
+.mid{
+    height:50vh;
+}
+.popUpHead{
+    border-radius: 2px;
+    background-color:rgb(15, 150, 82) ;
+    padding: 10px;
+    border: solid 5px #09715c solid;
+}
+.popUpFoot{
+    background-color: #09715c solid;
+}
 #popUpCloseButton{
     
-   position: relative;
-   top:70vh;
+   /* position: relative; */
+   /* top:65vh; */
+   width: 100%;
+   margin: 0 auto;
+   border: solid 1px rgb(15, 150, 82) ;
     
 }
 .popUp{
-    width: 100%;
-    height: 500px;
-    background-color: rgb(15, 150, 82);
+    width: 60vw;
+    height: 80%;
+    background-color: rgba(15, 150, 82, 0.411);
     position: fixed;
-    top:5px;
+    top:15px;
+    border-radius: 5px;
+    border: #09715c solid 10px;
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    margin-left: 20vw;
    
 
 
