@@ -26,7 +26,7 @@ const sendChanges = () => {
 <template>
 
     <div>
-        <button @click="editOn = !editOn">Click To Edit The Questions</button>
+        <button id="editButton" @click="editOn = !editOn">Click To Edit The Questions</button>
     </div>
     <br>
 
@@ -52,6 +52,36 @@ const sendChanges = () => {
         <input type="text" id="Value" v-model="value"><br>
         <br>
 
-        <button @click="sendChanges">Click to finalize changes</button>
+        <button id="finalizeButton" @click="sendChanges">Click To Finalize Changes</button>
     </div>
 </template>
+
+<style scoped>
+#editButton,
+#finalizeButton {
+  appearance: none;
+  background-color: #09715c;;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-right: 10px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+</style>

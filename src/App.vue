@@ -38,13 +38,13 @@ const finalizeChanges = (data) => {
 }
 
 const removeTemplate = () => {
-  questionsInJSONAsObj.pop()
+  questionsInJSONAsObj.splice(questionsLength.value - 1, 1);
+  questionsLength.value--;
 
 }
 </script>
 
 <template>
-  {{ questionsLength }}
   {{ questionsInJSONAsObj }}
   <Header></Header>
   <!-- Main Content Section -->
