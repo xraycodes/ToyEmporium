@@ -5,7 +5,6 @@ import JSONfile from './assets/components/questions.json'
 import { reactive, ref, watch } from 'vue';
 
 // Functionalites
-import QuestionTemplate from './assets/components/questionTemplate.vue';
 import AddAndDeleteButtons from './assets/components/AddAndDeleteButtons.vue';
 import EditButton from './assets/components/EditButton.vue';
 
@@ -19,17 +18,16 @@ const questionsInJSONAsObj = reactive(JSONfile)
 // Total number of questions shown(Initial is 2 as per questions.json)  
 const questionsLength = ref(JSONfile.length)
 
-watch(questionsLength, (newValue, oldValue) => {
-  const index = newValue - 1
-  if (!questionsInJSONAsObj[index]) {
-    questionsInJSONAsObj[index] = {};
-  }
-  questionsInJSONAsObj[index]['question'] = questionsLength.value
-  questionsInJSONAsObj[index]['statement'] = 'Insert question'
-  questionsInJSONAsObj[index]['answers'] = { "a": "Option A", "b": "Option B", "c": "Option C", "d": "Option D" }
-  questionsInJSONAsObj[index]['value'] = 1
-}
-)
+const addTemplate = () => {
+  const newQuestion = {
+    question: questionsInJSONAsObj.length + 1,
+    statement: 'Insert question',
+    answers: { a: 'Option A', b: 'Option B', c: 'Option C', d: 'Option D' },
+    value: 1,
+  };
+  questionsInJSONAsObj.push(newQuestion);
+  questionsLength.value++;
+};
 
 const finalizeChanges = (data) => {
   questionsInJSONAsObj[(data["question"] - 1)]["statement"] = data["statement"]
@@ -38,14 +36,13 @@ const finalizeChanges = (data) => {
 }
 
 const removeTemplate = () => {
-  questionsInJSONAsObj.splice(questionsLength.value - 1, 1);
+  questionsInJSONAsObj.splice(questionsLength.value - 1, 1)
   questionsLength.value--;
-
 }
+
 </script>
 
-<template>
-  {{ questionsInJSONAsObj }}
+<template> 
   <Header></Header>
   <!-- Main Content Section -->
   <main class="page-wrap">
@@ -66,12 +63,10 @@ const removeTemplate = () => {
       </div>
 
       <!-- Outputs # of question template component based on length of questionsLength -->
-      <QuestionTemplate :questionsLength="questionsLength" v-for="i in (questionsLength - JSONfile.length)" />
-
-
+    
       <!-- Add or delete buttons to add or subtract total questions -->
       <!-- Recieves removeTemplate and addTemplate from component -->
-      <AddAndDeleteButtons @removeTemplate="removeTemplate" @addTemplate="questionsLength++" />
+      <AddAndDeleteButtons @removeTemplate="removeTemplate" @addTemplate="addTemplate" />
 
       <br>
       <!-- Edit button to modify question and its answers -->
