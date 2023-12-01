@@ -30,12 +30,10 @@ main {
 }
 
 .logo img {
-    float: left;
-    font-size: 1.5em;
-    width: 250px;
-    height: auto;
-    margin-top: -30px;
-    margin-right: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
 }
 
 .header-nav {
@@ -132,7 +130,6 @@ ul ul ul ul {
 }
 
 .nav li {
-    border-bottom: 1px solid currentColor;
     padding-bottom: 0.25rem;
     padding-top: 0.25rem
 }
@@ -166,6 +163,7 @@ footer {
     padding-bottom: 2.125rem;
     padding-top: 1.25rem;
     text-transform: uppercase;
+
 }
 
 .site-footer__navigation li:not(:last-child) {
@@ -174,7 +172,9 @@ footer {
 
 .site-footer__social {
     font-size: 1rem;
-    line-height: 1;
+    line-height: 3;
+    text-align: center;
+
 }
 
 .site-footer__social li:not(:last-child) {
