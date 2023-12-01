@@ -28,7 +28,7 @@ const MaxQuestions = ref(true)
   </div>
 </template>
 
-<style scoped>
+<style scoped>s
 
 #addButton {
   appearance: none;
