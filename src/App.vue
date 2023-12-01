@@ -42,11 +42,7 @@ const removeTemplate = () => {
 
 </script>
 
-<template>
-  {{ questionsLength }}
-  {{ questionsInJSONAsObj }}
-
-  
+<template> 
   <Header></Header>
   <!-- Main Content Section -->
   <main class="page-wrap">
