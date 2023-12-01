@@ -138,7 +138,7 @@ ul ul ul ul {
     display: inline-block;
 }
 
-.theme-icon--instagram::before {
+.theme-icon--instagram {
     content: "\28";
 }
 
