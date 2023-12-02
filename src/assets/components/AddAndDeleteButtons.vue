@@ -3,32 +3,35 @@ import {ref, watch, } from 'vue'
 
 
 const emit = defineEmits(['addTemplate', 'removeTemplate'])
-const props = defineProps(['questionsLength'])
+const props = defineProps(['questionsLength', 'MAXQUESTIONLENGTH'])
 
+const addButtonFlag = ref(false)
 
-const MAXQUESTIONLENGTH = 10
-const MaxQuestions = ref(true)
-
-// NEEDS FIXING
-// onMounted(() => {
-//   watch(() => props.questionsLength, (newValue) => {
-//     questionNumber.value = newValue; // Update questionNumber when props.questionsLength changes
-//     if (newValue >= MAXQUESTIONLENGTH) {
-//       MaxQuestions.value = !MaxQuestions.value;
-//     }
-//   });
-// });
+watch(() => props.questionsLength, (newValue) => {
+  if (newValue == props.MAXQUESTIONLENGTH) {
+    addButtonFlag.value = false
+  } else {
+    addButtonFlag.value = true
+  }
+})
 
 </script>
 
 <template>
     <div>
-        <button id="addButton" v-if="MaxQuestions" @click="$emit('addTemplate')">Click To Add Template</button>
+        <p id="alert" v-if="!addButtonFlag">Maximum questions allowed is {{ props.MAXQUESTIONLENGTH }}</p>
+        <br>
+        <button id="addButton" v-if="addButtonFlag" @click="$emit('addTemplate')">Click To Add Template</button>
         <button id="deleteButton" @click="$emit('removeTemplate')">Click To Remove Template</button>
   </div>
 </template>
 
 <style scoped>
+
+#alert {
+  color:red;
+  font-weight: bold;
+}
 
 #addButton {
   appearance: none;
