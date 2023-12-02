@@ -18,6 +18,9 @@ import Footer from './assets/components/layout/Footer.vue';
 // JSONfile content is created into object
 const questionsInJSONAsObj = reactive(JSONfile)
 
+// Maximum number of questions
+const MAXQUESTIONLENGTH = 10
+
 // Total number of questions shown(Initial is 2 as per questions.json)  
 const questionsLength = ref(JSONfile.length)
 
@@ -193,7 +196,7 @@ function checkDuplicates(index)
     
       <!-- Add or delete buttons to add or subtract total questions -->
       <!-- Recieves removeTemplate and addTemplate from component -->
-      <AddAndDeleteButtons @removeTemplate="removeTemplate" @addTemplate="addTemplate" />
+      <AddAndDeleteButtons :MAXQUESTIONLENGTH="MAXQUESTIONLENGTH" :questionsLength="questionsLength" @removeTemplate="removeTemplate" @addTemplate="addTemplate" />
 
       <br>
       <!-- Edit button to modify question and its answers -->
