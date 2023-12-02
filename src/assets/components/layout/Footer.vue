@@ -30,7 +30,7 @@
                         <li>
                             <a href="https://www.adventuretowntoys.com/news.html" target="_self"> PRESS</a>
                         </li>
-
+                        <!-- Add more footer links as needed -->
                     </ul>
                 </nav>
             </div>
@@ -39,18 +39,14 @@
                     <ul class="inline-list">
                         <li>
                             <a class="theme-icon--facebook" href="https://www.facebook.com/AdventuretownToyEmporium/"
-                                target="_blank" rel="noreferrer" aria-label="View our Facebook Page">
-                            <img src="./../../images/fb.jpg">
-                            </a>
+                                target="_blank" rel="noreferrer" aria-label="View our Facebook Page">Facebook</a>
 
                         </li>
                         <li>
                             <a class="theme-icon--instagram" href="https://www.instagram.com/adventuretowntoys/"
-                                target="_blank" rel="noreferrer" aria-label="View our Instagram Page">
-                            <img src="./../../images/ig.jpg">
-                            </a>
+                                target="_blank" rel="noreferrer" aria-label="View our Instagram Page">Instagram</a>
                         </li>
-
+                        <!-- Add more social media links as needed -->
                     </ul>
                 </nav>
                 <p>&copy; 2023 Adventuretown Toy Emporium. All Rights Reserved.</p>
