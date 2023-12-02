@@ -39,12 +39,16 @@
                     <ul class="inline-list">
                         <li>
                             <a class="theme-icon--facebook" href="https://www.facebook.com/AdventuretownToyEmporium/"
-                                target="_blank" rel="noreferrer" aria-label="View our Facebook Page">Facebook</a>
+                                target="_blank" rel="noreferrer" aria-label="View our Facebook Page">
+                            <img src="./../../images/fb.jpg">
+                            </a>
 
                         </li>
                         <li>
                             <a class="theme-icon--instagram" href="https://www.instagram.com/adventuretowntoys/"
-                                target="_blank" rel="noreferrer" aria-label="View our Instagram Page">Instagram</a>
+                                target="_blank" rel="noreferrer" aria-label="View our Instagram Page">
+                            <img src="./../../images/ig.jpg">
+                            </a>
                         </li>
 
                     </ul>
