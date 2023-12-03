@@ -67,8 +67,7 @@ function radClicked(key, index)//ken
 {
   dontAdd = false;
 
-  console.log(questionsLength.value + ' is the amount of total questions to answer');
-  console.log('this radio button was clicked on index ' + index + ' and was answer ' + key);
+  
 
   checkDuplicates(index);
 
@@ -82,10 +81,10 @@ function radClicked(key, index)//ken
   }
 
 
-  console.log(submittedAnswersObject.value.length + ' is the current length of the submitted answers');
+  
 
   if (questionsLength.value === submittedAnswersObject.value.length) {
-    console.log('ok full');
+    
     allClicked = true;
     tallyAnswers();
   }
@@ -93,10 +92,10 @@ function radClicked(key, index)//ken
 }
 
 function tallyAnswers() {
-  console.log('tallyanswers called here');
+  
 
   submittedAnswersObject.value.forEach(element => {
-    console.log(element.answer);
+    
     if (element.answer === 'a') {
       points.value += 1;
     }
@@ -110,35 +109,35 @@ function tallyAnswers() {
       points.value += 4;
     }
   });
-  console.log('congrats, you have ' + points.value);
+  
   if (points.value <= 12) {
-    console.log('you have a DESIGNERS eye!! very cool!');
+    
     yourType.value = 'Designers';
     yourDescription.value = 'you have a DESIGNERS eye!! very cool! Does your child love to color, draw, paint, shape, sticker, sew, decorate, build and design? Then this is the place for you!';
 
   }
   if (points.value > 12 && points.value <= 16) {
-    console.log('you are quite the THINKER!! fantastic!');
+    
     yourType.value = 'Thinkers';
     yourDescription.value = 'you are quite the THINKER!! Fantastic! Does your child love puzzles and games, as well as to flex their knowledge and solve conundrums? Then this is the place for you!';
   }
   if (points.value > 16 && points.value <= 26) {
-    console.log('you would make a great SCIENTIST one day!! tubular!');
+    
     yourType.value = 'Scientists'
     yourDescription.value = 'you would make a great SCIENTIST one day!! tubular! Is your child curious about dinosaurs, minerals, the human body, physics, chemistry, biology, forensics and nanotech? Then this is the place for you!';
   }
   if (points.value > 26 && points.value <= 34) {
-    console.log('as a MAKER you create, build and explore! make dreams come true!');
+    
     yourType.value = 'Makers'
     yourDescription.value = 'as a MAKER, you create, build and explore! make dreams come true! Does your child love cars, to make robots, build, construct, engineer, tinker, code, and invent? Then this is the place for you!';
   }
   if (points.value > 34 && points.value <= 39) {
-    console.log('your varied interests would make for a fine DIRECTOR! awesome!');
+    
     yourType.value = 'Directors'
     yourDescription.value = 'your varied interests would make for a fine DIRECTOR! Awesome! Does your child love to “Play House” or create worlds with dinosaurs, dolls, and other critters? Then this is the place for you!';
   }
   if (points.value > 39) {
-    console.log('FLEDGINGS take flight with wide eyes and wonder!');
+   
     yourType.value = 'Fledglings'
     yourDescription.value = 'FLEDGINGS take flight with wide eyes and wonder! Does your child look at the world and all its things with wonder and excitement? ready to reach out and try new things, go to new places, then this is the place for you!.';
   }
@@ -148,7 +147,7 @@ function checkDuplicates(index) {
   selectedCheckArray.value.forEach(element => {
     if (element == index + 1) {
       dontAdd = true;
-      console.log('this is a dupe ...dontAdd is ' + dontAdd);
+      
       return;
     }
 
@@ -172,8 +171,7 @@ function checkDuplicates(index) {
         <div v-for="(answer, key) in question.answers" class='answers'>
           <input type="radio" :id="key" :name="'question-' + (index + 1)" @click="radClicked(key, index)">
           <label :for="key"> {{ answer }}</label>
-          <!-- remove below -->
-          <label>{{ }}</label>
+         
         </div>
 
         <br>

@@ -44,16 +44,16 @@ let links = [{ Thinkers: 'https://www.adventuretowntoys.com/Thinkers.html' }, { 
 
 function popUp() {
     show.value = true;
-    console.log('submit pressed ' + show.value);
+    
     leenteep = document.getElementById('lt').innerText;
-    console.log(leenteep + ' is the learner type');
+    
 
 
     links.forEach(element => {
         if (leenteep === Object.keys(element).toString()) {
-            console.log('MATCH on ' + Object.keys(element) + ' from foreach!');
+            
             learnTypeLink = 'https://www.adventuretowntoys.com/' + leenteep.toString() + '.html';
-            console.log(learnTypeLink);
+           
 
         }
     });
