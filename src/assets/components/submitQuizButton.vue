@@ -13,12 +13,11 @@
             <br>
             <p>{{ description }}</p>
         </div>
-
-        <div v-if="learnerType" class='mid'>
+        <div class='mid'>
             <a :href="'https://www.adventuretowntoys.com/' + learnerType + '.html'">
                 <img :src="'src/assets/images/learner-types/' + learnerType + '.png'" class=learnerImg>
             </a>
-            <p>Check out the factory above for lots of neat things!</p>
+            <p>Click the image above for lots of cool and neat things!</p>
         </div>
         <div class='popUpFoot'>
             <button @click="show = !show" class='subQuizButton' id='popUpCloseButton'>Close</button>
@@ -78,6 +77,7 @@ p {
     margin: 0 auto;
     max-width: fit-content;
     transition: 1s;
+    max-width: 15vw;
 }
 
 .learnerImg:hover {
