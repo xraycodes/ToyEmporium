@@ -52,30 +52,28 @@ let dontAdd = false;
 let points = ref(0);// holds the total points from the answers
 let yourType = ref();//learner type prop
 let yourDescription = ref();//learner type description
-function radClicked(key,index)//ken
+function radClicked(key, index)//ken
 {
   dontAdd = false;
 
   console.log(questionsLength.value + ' is the amount of total questions to answer');
-  console.log('this radio button was clicked on index ' + index + ' and was answer '  + key);
-  
+  console.log('this radio button was clicked on index ' + index + ' and was answer ' + key);
+
   checkDuplicates(index);
 
-  if(submittedAnswersObject.value.length < questionsLength.value)
-  {
-    if(dontAdd==false){
-     submittedAnswersObject.value.push ({"ques":index + 1,"answer":key});
-     selectedCheckArray.value.push(index + 1);
-   
-    
-   }
-}
+  if (submittedAnswersObject.value.length < questionsLength.value) {
+    if (dontAdd == false) {
+      submittedAnswersObject.value.push({ "ques": index + 1, "answer": key });
+      selectedCheckArray.value.push(index + 1);
+
+
+    }
+  }
 
 
   console.log(submittedAnswersObject.value.length + ' is the current length of the submitted answers');
 
-  if(questionsLength.value === submittedAnswersObject.value.length)
-  {
+  if (questionsLength.value === submittedAnswersObject.value.length) {
     console.log('ok full');
     allClicked = true;
     tallyAnswers();
@@ -83,84 +81,71 @@ function radClicked(key,index)//ken
 
 }
 
-function tallyAnswers()
-{
+function tallyAnswers() {
   console.log('tallyanswers called here');
-  
+
   submittedAnswersObject.value.forEach(element => {
     console.log(element.answer);
-    if(element.answer==='a')
-    {
+    if (element.answer === 'a') {
       points.value += 1;
     }
-    if(element.answer==='b')
-    {
+    if (element.answer === 'b') {
       points.value += 2;
     }
-    if(element.answer==='c')
-    {
+    if (element.answer === 'c') {
       points.value += 3;
     }
-    if(element.answer==='d')
-    {
+    if (element.answer === 'd') {
       points.value += 4;
     }
   });
   console.log('congrats, you have ' + points.value);
-  if(points.value <=12)
-  {
+  if (points.value <= 12) {
     console.log('you have a DESIGNERS eye!! very cool!');
     yourType.value = 'Designers';
     yourDescription.value = 'you have a DESIGNERS eye!! very cool! Does your child love to color, draw, paint, shape, sticker, sew, decorate, build and design? Then this is the place for you!';
 
   }
-  if(points.value>12&&points.value<=16)
-  {
-      console.log('you are quite the THINKER!! fantastic!');
-      yourType.value = 'Thinkers';
-      yourDescription.value = 'you are quite the THINKER!! Fantastic! Does your child love puzzles and games, as well as to flex their knowledge and solve conundrums? Then this is the place for you!';
+  if (points.value > 12 && points.value <= 16) {
+    console.log('you are quite the THINKER!! fantastic!');
+    yourType.value = 'Thinkers';
+    yourDescription.value = 'you are quite the THINKER!! Fantastic! Does your child love puzzles and games, as well as to flex their knowledge and solve conundrums? Then this is the place for you!';
   }
-  if(points.value > 16 && points.value <=26)
-  {
+  if (points.value > 16 && points.value <= 26) {
     console.log('you would make a great SCIENTIST one day!! tubular!');
     yourType.value = 'Scientists'
     yourDescription.value = 'you would make a great SCIENTIST one day!! tubular! Is your child curious about dinosaurs, minerals, the human body, physics, chemistry, biology, forensics and nanotech? Then this is the place for you!';
   }
-  if(points.value > 26 && points.value <=34)
-  {
+  if (points.value > 26 && points.value <= 34) {
     console.log('as a MAKER you create, build and explore! make dreams come true!');
     yourType.value = 'Makers'
     yourDescription.value = 'as a MAKER, you create, build and explore! make dreams come true! Does your child love cars, to make robots, build, construct, engineer, tinker, code, and invent? Then this is the place for you!';
   }
-  if(points.value > 34 && points.value<=39)
-  {
+  if (points.value > 34 && points.value <= 39) {
     console.log('your varied interests would make for a fine DIRECTOR! awesome!');
     yourType.value = 'Directors'
     yourDescription.value = 'your varied interests would make for a fine DIRECTOR! Awesome! Does your child love to “Play House” or create worlds with dinosaurs, dolls, and other critters? Then this is the place for you!';
   }
-  if(points.value>39)
-  {
+  if (points.value > 39) {
     console.log('FLEDGINGS take flight with wide eyes and wonder!');
     yourType.value = 'Fledglings'
     yourDescription.value = 'FLEDGINGS take flight with wide eyes and wonder! Does your child look at the world and all its things with wonder and excitement? ready to reach out and try new things, go to new places, then this is the place for you!.';
   }
 }
 
-function checkDuplicates(index)
-{
+function checkDuplicates(index) {
   selectedCheckArray.value.forEach(element => {
-    if(element == index +1)
-    {
+    if (element == index + 1) {
       dontAdd = true;
       console.log('this is a dupe ...dontAdd is ' + dontAdd);
       return;
     }
-    
+
   });
 }
 </script>
 
-<template> 
+<template>
   <Header></Header>
   <!-- Main Content Section -->
   <main class="page-wrap">
@@ -172,32 +157,32 @@ function checkDuplicates(index)
       <br>
       <!-- Outputs the static questions in questions.json-->
       <div v-for="(question, index) in questionsInJSONAsObj">
-        <p class = 'qstatement'>{{ index + 1 }}. {{ question.statement }}</p>
-        <div v-for="(answer, key) in question.answers" class = 'answers'>
-          <input type="radio" :id="key"  :name="'question-' + (index + 1)" @click="radClicked(key,index)">
-          <label :for="key" > {{ answer }}</label>
+        <p class='qstatement'>{{ index + 1 }}. {{ question.statement }}</p>
+        <div v-for="(answer, key) in question.answers" class='answers'>
+          <input type="radio" :id="key" :name="'question-' + (index + 1)" @click="radClicked(key, index)">
+          <label :for="key"> {{ answer }}</label>
           <!-- remove below -->
-           <label>{{  }}</label> 
+          <label>{{ }}</label>
         </div>
 
         <br>
-        
+
       </div>
 
       <!-- Outputs # of question template component based on length of questionsLength -->
-    
+
       <!-- Add or delete buttons to add or subtract total questions -->
       <!-- Recieves removeTemplate and addTemplate from component -->
-      <AddAndDeleteButtons @removeTemplate="removeTemplate" @addTemplate="addTemplate" :questionsLength = 'questionsLength.value'/>
+      <AddAndDeleteButtons @removeTemplate="removeTemplate" @addTemplate="addTemplate"
+        :questionsLength='questionsLength.value' />
 
       <br>
       <!-- Edit button to modify question and its answers -->
       <EditButton :questionsLength="questionsLength" @finalizeChanges="finalizeChanges" />
 
       <!-- below, the submit button component and popUp, hidden by v-show until all questions are answered -->
-      <div v-show="allClicked">
-          <submitQuizButton :learnerType = 'yourType' :description = 'yourDescription'></submitQuizButton>
-      </div>
+      <submitQuizButton :allClicked="allClicked" :learnerType='yourType' :description='yourDescription'>
+      </submitQuizButton>
     </section>
   </main>
 
@@ -215,42 +200,49 @@ function checkDuplicates(index)
 
 
 <style scoped>
-main{
+main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
 }
-.answers{
- display: flex;
-width: fit-content;
+
+.answers {
+  display: flex;
+  width: fit-content;
 
 
 }
-.subCom{
-  width:100%;
+
+.subCom {
+  width: 100%;
   margin: 0 auto;
 }
-input:hover{
 
-  transform:scale(1.2);
+input:hover {
+
+  transform: scale(1.2);
   transition: 1s;
 }
 
-p{
+p {
   margin-bottom: 10px;
 }
 
-@media  (min-width:500px) {
-  .answers{
+@media (min-width:500px) {
+  .answers {
     margin-left: 35vw;
-    }
+  }
 }
-p,h1,label{
-  font-size: clamp(1rem,2vw,1.8rem);
+
+p,
+h1,
+label {
+  font-size: clamp(1rem, 2vw, 1.8rem);
   text-transform: capitalize;
 }
-.qstatement{
+
+.qstatement {
   background-color: rgba(0, 139, 86, 0.13);
   border-radius: 5px;
 }
