@@ -1,4 +1,13 @@
 <script setup>
+window.addEventListener("pageshow", function (event) {
+  var historyTraversal = event.persisted ||
+    (typeof window.performance != "undefined" &&
+      window.performance.navigation.type === 2);
+  if (historyTraversal) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});
 // Importing questions.json 
 import JSONfile from './assets/components/questions.json'
 
