@@ -13,7 +13,7 @@
             <br>
             <p>{{ description }}</p>
         </div>
-        <div class='mid'>
+        <div v-if="learnerType" class='mid'>
             <a :href="'https://www.adventuretowntoys.com/' + learnerType + '.html'">
                 <img :src="'src/assets/images/learner-types/' + learnerType + '.png'" class=learnerImg>
             </a>
@@ -44,16 +44,16 @@ let links = [{ Thinkers: 'https://www.adventuretowntoys.com/Thinkers.html' }, { 
 
 function popUp() {
     show.value = true;
-    
+
     leenteep = document.getElementById('lt').innerText;
-    
+
 
 
     links.forEach(element => {
         if (leenteep === Object.keys(element).toString()) {
-            
+
             learnTypeLink = 'https://www.adventuretowntoys.com/' + leenteep.toString() + '.html';
-           
+
 
         }
     });
