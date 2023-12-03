@@ -13,7 +13,8 @@
             <br>
             <p>{{ description }}</p>
         </div>
-        <div class='mid'>
+
+        <div v-if="learnerType" class='mid'>
             <a :href="'https://www.adventuretowntoys.com/' + learnerType + '.html'">
                 <img :src="'src/assets/images/learner-types/' + learnerType + '.png'" class=learnerImg>
             </a>
