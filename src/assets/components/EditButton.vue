@@ -48,12 +48,14 @@ const sendChanges = () => {
         <label for="Answers">D: </label>
         <input type="text" id="Answers" v-model="answers.d"><br> 
 
-        <label for="Value">Value: </label>
-        <input type="text" id="Value" v-model="value"><br>
+    
+        
         <br>
 
         <button id="finalizeButton" @click="sendChanges">Click To Finalize Changes</button>
+        <br>
     </div>
+    <br>
 </template>
 
 <style>
