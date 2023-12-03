@@ -18,9 +18,6 @@ import Footer from './assets/components/layout/Footer.vue';
 // JSONfile content is created into object
 const questionsInJSONAsObj = reactive(JSONfile)
 
-// Maximum number of questions
-const MAXQUESTIONLENGTH = 10
-
 // Total number of questions shown(Initial is 2 as per questions.json)  
 const questionsLength = ref(JSONfile.length)
 
@@ -47,7 +44,7 @@ const removeTemplate = () => {
 }
 
 //------------------------------------------------------------------------------------------------------------
-// const answerArray = ref([]);//holds the keys
+
 const submittedAnswersObject = ref([]);//holds both keys and indexes as objects in an array
 let allClicked = false;
 let selectedCheckArray = ref([]);//this help check whether the same question has been selected more than once
@@ -58,22 +55,20 @@ let yourDescription = ref();//learner type description
 function radClicked(key,index)//ken
 {
   dontAdd = false;
+
   console.log(questionsLength.value + ' is the amount of total questions to answer');
-  
   console.log('this radio button was clicked on index ' + index + ' and was answer '  + key);
-  // answerArray.value.push(key);
+  
   checkDuplicates(index);
 
-  
   if(submittedAnswersObject.value.length < questionsLength.value)
   {
     if(dontAdd==false){
      submittedAnswersObject.value.push ({"ques":index + 1,"answer":key});
-    selectedCheckArray.value.push(index + 1);
+     selectedCheckArray.value.push(index + 1);
    
-    console.log(submittedAnswersObject);
-   
-  }
+    
+   }
 }
 
 
@@ -115,39 +110,39 @@ function tallyAnswers()
   if(points.value <=12)
   {
     console.log('you have a DESIGNERS eye!! very cool!');
-    yourType.value = 'you have a DESIGNERS eye!! very cool!';
-    yourDescription.value = 'Does your child love to color, draw, paint, shape, sticker, sew, decorate, build and design? Then this is the place for you!';
+    yourType.value = 'Designers';
+    yourDescription.value = 'you have a DESIGNERS eye!! very cool! Does your child love to color, draw, paint, shape, sticker, sew, decorate, build and design? Then this is the place for you!';
 
   }
   if(points.value>12&&points.value<=16)
   {
       console.log('you are quite the THINKER!! fantastic!');
-      yourType.value = 'you are quite the THINKER!! fantastic!';
-      yourDescription.value = 'Does your child love puzzles and games, as well as to flex their knowledge and solve conundrums? Then this is the place for you!';
+      yourType.value = 'Thinkers';
+      yourDescription.value = 'you are quite the THINKER!! Fantastic! Does your child love puzzles and games, as well as to flex their knowledge and solve conundrums? Then this is the place for you!';
   }
   if(points.value > 16 && points.value <=26)
   {
     console.log('you would make a great SCIENTIST one day!! tubular!');
-    yourType.value = 'you would make a great SCIENTIST one day!! tubular!'
-    yourDescription.value = 'Is your child curious about dinosaurs, minerals, the human body, physics, chemistry, biology, forensics and nanotech? Then this is the place for you!';
+    yourType.value = 'Scientists'
+    yourDescription.value = 'you would make a great SCIENTIST one day!! tubular! Is your child curious about dinosaurs, minerals, the human body, physics, chemistry, biology, forensics and nanotech? Then this is the place for you!';
   }
   if(points.value > 26 && points.value <=34)
   {
     console.log('as a MAKER you create, build and explore! make dreams come true!');
-    yourType.value = 'as a MAKER, you create, build and explore! make dreams come true!'
-    yourDescription.value = 'Does your child love cars, to make robots, build, construct, engineer, tinker, code, and invent? Then this is the place for you!';
+    yourType.value = 'Makers'
+    yourDescription.value = 'as a MAKER, you create, build and explore! make dreams come true! Does your child love cars, to make robots, build, construct, engineer, tinker, code, and invent? Then this is the place for you!';
   }
   if(points.value > 34 && points.value<=39)
   {
     console.log('your varied interests would make for a fine DIRECTOR! awesome!');
-    yourType.value = 'your varied interests would make for a fine DIRECTOR! awesome!'
-    yourDescription.value = 'Does your child love to “Play House” or create worlds with dinosaurs, dolls, and other critters? Then this is the place for you!';
+    yourType.value = 'Directors'
+    yourDescription.value = 'your varied interests would make for a fine DIRECTOR! Awesome! Does your child love to “Play House” or create worlds with dinosaurs, dolls, and other critters? Then this is the place for you!';
   }
   if(points.value>39)
   {
     console.log('FLEDGINGS take flight with wide eyes and wonder!');
-    yourType.value = 'FLEDGINGS take flight with wide eyes and wonder!'
-    yourDescription.value = 'does your child look at the world and all its things with wonder and excitement? ready to reach out and try new things, go to new places, then this is the place for you!.';
+    yourType.value = 'Fledglings'
+    yourDescription.value = 'FLEDGINGS take flight with wide eyes and wonder! Does your child look at the world and all its things with wonder and excitement? ready to reach out and try new things, go to new places, then this is the place for you!.';
   }
 }
 
@@ -160,10 +155,7 @@ function checkDuplicates(index)
       console.log('this is a dupe ...dontAdd is ' + dontAdd);
       return;
     }
-    // else if(element != index + 1 ) 
-    // {dontAdd = false;}
-
-    console.log(index + element + 'here' + dontAdd);
+    
   });
 }
 </script>
@@ -179,8 +171,8 @@ function checkDuplicates(index)
       <h1>Quiz</h1>
       <br>
       <!-- Outputs the static questions in questions.json-->
-      <div v-for="(question, index) in questionsInJSONAsObj" id="questionBlock">
-        <p>{{ index + 1 }}. {{ question.statement }}</p>
+      <div v-for="(question, index) in questionsInJSONAsObj">
+        <p class = 'qstatement'>{{ index + 1 }}. {{ question.statement }}</p>
         <div v-for="(answer, key) in question.answers" class = 'answers'>
           <input type="radio" :id="key"  :name="'question-' + (index + 1)" @click="radClicked(key,index)">
           <label :for="key" > {{ answer }}</label>
@@ -196,7 +188,7 @@ function checkDuplicates(index)
     
       <!-- Add or delete buttons to add or subtract total questions -->
       <!-- Recieves removeTemplate and addTemplate from component -->
-      <AddAndDeleteButtons :MAXQUESTIONLENGTH="MAXQUESTIONLENGTH" :questionsLength="questionsLength" @removeTemplate="removeTemplate" @addTemplate="addTemplate" />
+      <AddAndDeleteButtons @removeTemplate="removeTemplate" @addTemplate="addTemplate" :questionsLength = 'questionsLength.value'/>
 
       <br>
       <!-- Edit button to modify question and its answers -->
@@ -232,8 +224,8 @@ main{
 .answers{
  display: flex;
 width: fit-content;
-/* margin-left: 40vw; */
-/* flex-direction: row; */
+
+
 }
 .subCom{
   width:100%;
@@ -243,21 +235,23 @@ input:hover{
 
   transform:scale(1.2);
   transition: 1s;
-
 }
+
 p{
   margin-bottom: 10px;
 }
 
-@media  (min-width:450px) {
+@media  (min-width:500px) {
   .answers{
     margin-left: 35vw;
-    
-  }
+    }
 }
 p,h1,label{
   font-size: clamp(1rem,2vw,1.8rem);
   text-transform: capitalize;
 }
-
+.qstatement{
+  background-color: rgba(0, 139, 86, 0.13);
+  border-radius: 5px;
+}
 </style>
