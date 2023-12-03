@@ -30,6 +30,8 @@ const questionsInJSONAsObj = reactive(JSONfile)
 // Total number of questions shown(Initial is 2 as per questions.json)  
 const questionsLength = ref(JSONfile.length)
 
+const MAXQUESTIONLENGTH = 10
+
 const addTemplate = () => {
   const newQuestion = {
     question: questionsInJSONAsObj.length + 1,
@@ -183,7 +185,7 @@ function checkDuplicates(index) {
       <!-- Add or delete buttons to add or subtract total questions -->
       <!-- Recieves removeTemplate and addTemplate from component -->
       <AddAndDeleteButtons @removeTemplate="removeTemplate" @addTemplate="addTemplate"
-        :questionsLength='questionsLength.value' />
+        :questionsLength='questionsLength' :MAXQUESTIONLENGTH="MAXQUESTIONLENGTH" />
 
       <br>
       <!-- Edit button to modify question and its answers -->
